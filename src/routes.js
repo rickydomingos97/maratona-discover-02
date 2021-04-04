@@ -17,11 +17,14 @@ const profile = {
 /* const __dirname + "/views"
 routes.get('/', (req, res) => { return res.render("/index.html")})
 */
+// adicionando os dados do formulario
+const jobs = []
 
 routes.get('/', (req, res) => { return res.render(views + "index", { profile })})
 routes.get('/job', (req, res) => { return res.render(views + "job")})
 routes.post('/job', (req, res) => {
-   console.log(req.body);
+   jobs.push(req.body)
+   return res.redirect('/')
   })
 routes.get('/job/edit', (req, res) => { return res.render(views + "job-edit")})
 routes.get('/profile', (req, res) => { return res.render(views + "profile", { profile: profile })})
