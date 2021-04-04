@@ -23,8 +23,14 @@ const jobs = []
 routes.get('/', (req, res) => { return res.render(views + "index", { profile })})
 routes.get('/job', (req, res) => { return res.render(views + "job")})
 routes.post('/job', (req, res) => {
-   jobs.push(req.body)
-   return res.redirect('/')
+    // req.body = { name: 'asdf', 'daily-hours': '3.1', 'total-hours': '3' }
+    jobs.push({
+    name: req.body.name,
+    "daily-hours": req.body["daily-hours"],
+    "total-hours": req.body["total-hours"],
+    created_at: Date.now() // atribuindo data de hoje //
+  })
+  return res.redirect('/')
   })
 routes.get('/job/edit', (req, res) => { return res.render(views + "job-edit")})
 routes.get('/profile', (req, res) => { return res.render(views + "profile", { profile: profile })})
