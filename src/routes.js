@@ -6,7 +6,7 @@ const views = __dirname + "/views/"
 
 const profile = {
   name: "Ricardo Domingos",
-  avatar: "https://avatars.githubusercontent.com/u/14863048?v=4",
+  avatar: "https://github.com/rickydomingos97.png",
   "monthly-budget": 3000,
   "hours-per-day": 5,
   "days-per-week": 5,
@@ -20,6 +20,9 @@ routes.get('/', (req, res) => { return res.render("/index.html")})
 
 routes.get('/', (req, res) => { return res.render(views + "index", { profile })})
 routes.get('/job', (req, res) => { return res.render(views + "job")})
+routes.post('/job', (req, res) => {
+   console.log(req.body);
+  })
 routes.get('/job/edit', (req, res) => { return res.render(views + "job-edit")})
 routes.get('/profile', (req, res) => { return res.render(views + "profile", { profile: profile })})
 
